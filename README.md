@@ -9,6 +9,8 @@ No account. No ads. No tracking. Just radio.
 [Rust](https://img.shields.io/badge/language-Rust-orange)
 [License: GPLv3](https://img.shields.io/badge/license-GPLv3-blue)
 
+<img width="787" height="852" alt="radio" src="https://github.com/user-attachments/assets/9d4e0336-5b29-450d-b28d-024551923559" />
+
 ---
 
 ## What it does
