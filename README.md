@@ -178,53 +178,20 @@ If you want to change *how it sounds*, edit only
 
 ---
 
-## Changing the song-refresh rate
 
-In `app-gui/src/main.rs`, in `play_station_nonblocking()`:
-
-```rust
-std::thread::spawn(move || {
-    loop {
-        if let Some(title) = radio_player_crate::fetch_icy_title(&stream_url) {
-            if song_tx.send(title).is_err() { break; }
-        }
-        std::thread::sleep(Duration::from_secs(8)); // <- change this
-    }
-});
-```
-
-Change `8` to e.g. `3` for faster updates, `15` for slower. Don't go below
-3 s - every poll opens a new HTTP connection to the station.
-
----
-
-## Data sources & attribution - read this before publishing
-
-### 1. Station list: RadioBrowser - YES, you must credit it
+### 1. Station list: RadioBrowser 
 
 This app does **not** ship its own station list. Every search goes live to:
 
 - **RadioBrowser** - https://www.radio-browser.info / `all.api.radio-browser.info`
 - A community-maintained, open database of internet radio stations.
 
-You must say that in the README / About box, and you must **not** claim
-the list is yours. The attribution in this README ("Station list provided
-by RadioBrowser") is the minimum. Keep the `User-Agent: ham-radio-app/0.1.0`
-in `radio-api` - that is how RadioBrowser identifies clients.
 
-Do **not** copy RadioBrowser's database into your repo and re-publish it
-as your own. Query the API at runtime, as this code does.
-
-### 2. Audio streams & music: you don't own them
+### 2. Audio streams & music:
 
 The app plays streams owned by the stations. Songs, jingles, news and
 other audio remain copyright of the stations / rights holders.
 
-- This repo contains **no audio, no station streams, no music**.
-- Recording is for **personal use** - the file is saved on the user's
-  own machine. Do not upload recordings, do not redistribute them.
-- If a station asks not to be listed / played, respect that (RadioBrowser
-  has a takedown / `hidebroken` mechanism).
 
 ### 3. Dependencies
 
@@ -234,7 +201,6 @@ rusty_aac, reqwest, rusqlite, etc.). Each keeps its own license
 but they still apply to those crates - see `Cargo.lock` / crates.io
 for the full list.
 
----
 
 ## License
 
@@ -249,39 +215,3 @@ What that means in plain language:
 - GPLv3 does **not** give anyone rights to the RadioBrowser data or
   to the audio streams / music - those have their own owners (see above).
 
-To apply GPLv3 on GitHub: put the full GPLv3 text in a file named
-`LICENSE` in the repo root, and keep the `License` section above in
-this README. If you create the repo via github.com, you can also pick
-"GNU General Public License v3.0" in the "Add a license" dropdown -
-it creates the same `LICENSE` file for you.
-
-> If you later want a more permissive license (e.g. MIT - "do anything,
-> no need to share source"), you would need to re-license. GPLv3 is the
-> stricter, copyleft choice: it keeps forks open too.
-
----
-
-## .gitignore - what NOT to commit
-
-Don't commit build output, local databases, or recordings:
-
-```gitignore
-/target/
-*.db
-*.mp3
-*.aac
-ham_recording*.mp3
-*.log
-```
-
----
-
-## Contributing / issues
-
-Issues and PRs welcome. Please keep changes small and scoped:
-
-- UI only -> `app-gui/src/main.rs`
-- Playback only -> `crates/radio-player/src/lib.rs`
-- Search / API only -> `crates/radio-api/src/lib.rs`
-
-If you add a feature, update this README's feature list in the same PR.
