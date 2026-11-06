@@ -1,0 +1,23 @@
+[package]
+name = "ham-radio-gui"
+version.workspace = true
+edition.workspace = true
+
+[package]
+name = "ham-radio-gui"
+version = "0.1.0"
+edition = "2021"
+authors = ["Turan"]
+description = "Ham Radio GUI"
+license = "【entity-MIT¦canonical_name=MIT】"
+
+[dependencies]
+radio-core = { path = "../crates/radio-core" }
+radio-api = { path = "../crates/radio-api" }
+radio-tray = { path = "../crates/radio-tray" }
+radio-player = { path = "../crates/radio-player" }
+anyhow = "1.0"
+tokio = { version = "1.40", features = ["rt", "rt-multi-thread", "macros", "time"] }
+eframe = { version = "0.27", features = ["default"] }
+egui = "0.27"
+clap = { version = "4.5", features = ["derive"] }

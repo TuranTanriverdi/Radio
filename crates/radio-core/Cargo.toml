@@ -1,0 +1,12 @@
+
+[package]
+name = "radio-core"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+radio-api = { path = "../radio-api" }
+radio-player = { path = "../radio-player" }
+radio-storage = { path = "../radio-storage" }
+tokio = { version = "1.40", features = ["full"] }
+anyhow = "1.0"

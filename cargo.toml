@@ -1,0 +1,16 @@
+[workspace]
+members = [
+    "crates/radio-api",
+    "crates/radio-player", 
+    "crates/radio-storage",
+    "crates/radio-core",
+    "crates/radio-tray",
+    "app",
+    "app-gui"
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["Ham Radio App"]

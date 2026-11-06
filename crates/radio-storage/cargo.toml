@@ -1,0 +1,12 @@
+[package]
+name = "radio-storage"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+rusqlite = { version = "0.32", features = ["bundled"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+dirs = "5.0"
+thiserror = "2.0"
+radio-api = { path = "../radio-api" }
