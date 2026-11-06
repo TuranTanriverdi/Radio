@@ -3,14 +3,6 @@ name = "ham-radio-gui"
 version.workspace = true
 edition.workspace = true
 
-[package]
-name = "ham-radio-gui"
-version = "0.1.0"
-edition = "2021"
-authors = ["Turan"]
-description = "Ham Radio GUI"
-license = "【entity-MIT¦canonical_name=MIT】"
-
 [dependencies]
 radio-core = { path = "../crates/radio-core" }
 radio-api = { path = "../crates/radio-api" }
